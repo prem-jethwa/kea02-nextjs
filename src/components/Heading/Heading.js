@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useIntersect } from '../../hooks/useIntersect';
-const Heading = (props: any) => {
+const Heading = (props) => {
   const [setNode, entry] = useIntersect({
     threshold: 0.5,
     rootMargin: '20px',
