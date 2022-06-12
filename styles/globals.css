@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-primary-bg;
+}
+
+.grid-auto-fit {
+  display: grid;
+  place-content: center;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
