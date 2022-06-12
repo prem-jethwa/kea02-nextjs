@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useIntersect } from '../../hooks/useIntersect';
 const Heading = (props) => {
+  const [globalWindow, setGlobalWindow] = useState(null);
   const [setNode, entry] = useIntersect({
-    threshold: 0.5,
+    threshold: globalWindow?.innerWidth < 500 ? 0.2 : 0.4,
     rootMargin: '20px',
   });
 
@@ -15,6 +16,10 @@ const Heading = (props) => {
   useEffect(() => {
     entry?.isIntersecting && setIsIntersected(true);
   }, [entry]);
+
+  useEffect(() => {
+    setGlobalWindow(window);
+  }, []);
 
   return (
     <div
