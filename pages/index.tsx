@@ -82,18 +82,20 @@ const Home: NextPage = () => {
             >
               <img src="./bg/leave.png" className="-ml-24 mt-0 w-60" />
             </div>
-            <div className="p-6 w-full max-w-md  mt-8">
+            <div className="p-6 w-full  mt-8">
               {/* <div className="m-4"> */}
-              <span className="md:text-9xl text-6xl opacity-10 ">Food</span>
-              <h2 className="md:text-4xl text-3xl font-bold ">
+              <span className="xl:text-9xl md:text-8xl text-6xl opacity-10 font-bold ">
+                Food
+              </span>
+              <h2 className="lg:text-6xl md:text-4xl text-3xl font-bold ">
                 Discover Restaurant <br /> & Delicious Food
               </h2>
               {/* </div> */}
 
               <Input
                 btnText="GO"
-                className="md:mr-20"
-                btnClasses="rounded-tl-full w-28"
+                className="md:mr-20 max-w-sm"
+                btnClasses="rounded-tl-full w-28 "
               />
             </div>
             <div
