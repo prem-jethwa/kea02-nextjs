@@ -7,107 +7,19 @@ import SecondaryCard from '../src/components/Card/SecondaryCard';
 import Header from '../src/components/container/Header';
 import Heading from '../src/components/Heading/Heading';
 import Input from '../src/components/Input/Input';
-import { appURL } from '../src/utils';
-
-const slides = [
-  { imgUrl: `${appURL}/img/slide-dish.png`, tranX: 0, rotate: 0 },
-  { imgUrl: `${appURL}/img/slide-dish.png`, tranX: 1, rotate: 20 },
-  { imgUrl: `${appURL}/img/slide-dish.png`, tranX: 2, rotate: 20 },
-  { imgUrl: `${appURL}/img/slide-dish.png`, tranX: 3, rotate: 20 },
-  { imgUrl: `${appURL}/img/slide-dish.png`, tranX: 4, rotate: 20 },
-];
-
-const REST_PRIMARY_CARD = [
-  {
-    title: 'Fire Water',
-    desc: 'we are all about we are all about to the fullest and all content dining out or in!dining out or in!',
-    location: 'Hitech City',
-    link: '/',
-    imgUrl: `${appURL}/img/img1.png`,
-  },
-  {
-    title: 'The wonton ',
-    desc: 'we are all about we are all about to the fullest and all content dining out or in!dining out or in!',
-    location: 'gachibowli',
-    link: '/',
-    imgUrl: `${appURL}/img/img2.png`,
-  },
-];
-
-const REST_SECONDARY_CARD = [
-  {
-    title: 'Ham Sandwich',
-    desc: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
-    price: '$10.50',
-    imgUrl: `${appURL}/img/img1.png`,
-  },
-  {
-    title: 'Ham Sandwich',
-    desc: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
-    price: '$10.50',
-    imgUrl: `${appURL}/img/img2.png`,
-  },
-  {
-    title: 'Ham Sandwich',
-    desc: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
-    price: '$10.50',
-    imgUrl: `${appURL}/img/img3.png`,
-  },
-  {
-    title: 'Ham Sandwich',
-    desc: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
-    price: '$10.50',
-    imgUrl: `${appURL}/img/img4.png`,
-  },
-  {
-    title: 'Ham Sandwich',
-    desc: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
-    price: '$10.50',
-    imgUrl: `${appURL}/img/img5.png`,
-  },
-  {
-    title: 'Ham Sandwich',
-    desc: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr,',
-    price: '$10.50',
-    imgUrl: `${appURL}/img/img6.png`,
-  },
-];
-
-const SOCIAL_MEDIA = [
-  {
-    link: 'https://www.instagram.com/premmjethwa/',
-    imgUrl: `${appURL}/icons/social/Shape.png`,
-  },
-  {
-    link: 'https://www.linkedin.com/in/premjethwa/',
-    imgUrl: `${appURL}/icons/social/Shape-1.png`,
-  },
-  {
-    link: 'https://github.com/prem-jethwa/',
-    imgUrl: `${appURL}/icons/social/Shape-2.png`,
-  },
-  {
-    link: 'https://twitter.com/premmjethwa/',
-    imgUrl: `${appURL}/icons/social/Shape-3.png`,
-  },
-];
-
-// Functions
-function debounce(fn: any, ms: any) {
-  let timer: any;
-  return (_: any) => {
-    clearTimeout(timer);
-    timer = setTimeout((_) => {
-      timer = null;
-      fn();
-    }, ms);
-  };
-}
+import {
+  APP_URL,
+  HERO_SLIDES,
+  REST_PRIMARY_CARD,
+  REST_SECONDARY_CARD,
+  SOCIAL_MEDIA,
+} from '../src/utils/constants';
+import { debounce } from '../src/utils/utils';
 
 const Home: NextPage = () => {
   const [currPosition, setCurrPosition] = useState(1);
   const slideRef: any = useRef(null);
-  const totalSlides = slides?.length - 1;
+  const totalSlides = HERO_SLIDES?.length - 1;
 
   const sec2Ref = useRef(null);
   const sec4Ref = useRef(null);
@@ -193,7 +105,7 @@ const Home: NextPage = () => {
                 src="./bg/dotted-bg.png"
                 className="absolute bottom-0 left-0 w-1/2"
               />
-              {slides.map((slide, idx) => {
+              {HERO_SLIDES.map((slide, idx) => {
                 const formula = currPosition + idx;
                 const transform = `translateX(${formula * 100}%) rotate(${
                   formula * 50
@@ -270,7 +182,7 @@ const Home: NextPage = () => {
                     className="w-20"
                     height={35}
                     width={80}
-                    src={`${appURL}/icons/more-arrow.png`}
+                    src={`${APP_URL}/icons/more-arrow.png`}
                   />
                   <p>see more</p>
                 </>
@@ -364,12 +276,12 @@ const Home: NextPage = () => {
                     <Image
                       height={100}
                       width={100}
-                      src={`${appURL}/icons/meeting.png`}
+                      src={`${APP_URL}/icons/meeting.png`}
                       className="m-auto text-center"
                     />
                   </div>
                   <img
-                    src={`${appURL}/icons/arrow.png`}
+                    src={`${APP_URL}/icons/arrow.png`}
                     className="absolute w-20 top-1/2 rotate-180 left-2/4  transform -translate-x-1/4 -translate-y-1/2"
                   />
                   <div className="p-4 pl-16 pr-2 pt-6 w-1/2">
@@ -404,14 +316,14 @@ const Home: NextPage = () => {
                     </p>
                   </div>
                   <img
-                    src={`${appURL}/icons/arrow.png`}
+                    src={`${APP_URL}/icons/arrow.png`}
                     className="absolute w-20 top-1/2 -ml-6 left-2/4  transform -translate-x-2/4 -translate-y-1/2"
                   />
                   <div className="bg-secondary-bg w-1/2 py-10 flex items-center justify-center">
                     <Image
                       height={100}
                       width={100}
-                      src={`${appURL}/icons/dish.png`}
+                      src={`${APP_URL}/icons/dish.png`}
                       className="m-auto text-center"
                     />
                   </div>
@@ -422,7 +334,7 @@ const Home: NextPage = () => {
                   <Image
                     height={100}
                     width={150}
-                    src={`${appURL}/icons/scooter.png`}
+                    src={`${APP_URL}/icons/scooter.png`}
                     className="m-auto "
                   />
                   <h2 className="text-primary-font text-2xl px-12 my-4">
@@ -503,7 +415,7 @@ const Home: NextPage = () => {
               // btnText="GO"
               className="my-10 max-w-xs mx-auto"
               btnClasses=" rounded-full px-4"
-              btnImgUrl={`${appURL}/icons/white-arrow.png`}
+              btnImgUrl={`${APP_URL}/icons/white-arrow.png`}
             />
             <div className="flex text-sm justify-center align-middle items-center md:gap-10 gap-4">
               <a>Product</a>

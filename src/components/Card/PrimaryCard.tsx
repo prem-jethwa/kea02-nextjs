@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { appURL } from '../../utils';
+import { APP_URL } from '../../utils/constants';
 
 function PrimaryCard(props: any) {
   return (
@@ -19,7 +19,7 @@ function PrimaryCard(props: any) {
       </div>
       <div className="flex justify-between px-6 pt-4 pb-2 bg-primary-lightBg text-white">
         <span className="inline-block text-white rounded-full px-3 py-1 text-sm font-semibold  mr-2 mb-2">
-          <Image height={35} width={25} src={`${appURL}/icons/location.png`} />{' '}
+          <Image height={35} width={25} src={`${APP_URL}/icons/location.png`} />{' '}
           {props.location}
         </span>
         <span className="inline-block text-primary-main text-sm  bg-white p-4 px-6 mr-2 mb-2">
