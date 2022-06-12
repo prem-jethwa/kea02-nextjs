@@ -21,7 +21,7 @@ export const useIntersect = ({
 
     const { current: currentObserver } = observer;
 
-    if (node) {
+    if (node.current) {
       currentObserver.observe(node.current);
     }
 
