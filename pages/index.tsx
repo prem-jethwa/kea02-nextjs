@@ -4,8 +4,8 @@ import Link from 'next/link';
 import React, { useState, useRef, useEffect } from 'react';
 import PrimaryCard from '../src/components/Card/PrimaryCard';
 import SecondaryCard from '../src/components/Card/SecondaryCard';
-import Header from '../src/components/containter/Header';
-import Heading from '../src/components/Heading/heading';
+import Header from '../src/components/container/Header';
+import Heading from '../src/components/Heading/Heading';
 import Input from '../src/components/Input/Input';
 import { appURL } from '../src/utils';
 
@@ -17,7 +17,7 @@ const slides = [
   { imgUrl: `${appURL}/img/slide-dish.png`, tranX: 4, rotate: 20 },
 ];
 
-const REST_PRIMERY_CARD = [
+const REST_PRIMARY_CARD = [
   {
     title: 'Fire Water',
     desc: 'we are all about we are all about to the fullest and all content dining out or in!dining out or in!',
@@ -99,7 +99,7 @@ function debounce(fn: any, ms: any) {
     clearTimeout(timer);
     timer = setTimeout((_) => {
       timer = null;
-      fn.apply(this, arguments);
+      fn();
     }, ms);
   };
 }
@@ -108,6 +108,10 @@ const Home: NextPage = () => {
   const [currPosition, setCurrPosition] = useState(1);
   const slideRef: any = useRef(null);
   const totalSlides = slides?.length - 1;
+
+  const sec2Ref = useRef(null);
+  const sec4Ref = useRef(null);
+  const sec6Ref = useRef(null);
 
   const handleLeftSlideClick = () => {
     if (currPosition >= 0) {
@@ -123,8 +127,6 @@ const Home: NextPage = () => {
     } else {
       setCurrPosition(0);
     }
-
-    console.log('>> left');
   };
 
   useEffect(() => {
@@ -192,7 +194,6 @@ const Home: NextPage = () => {
                 className="absolute bottom-0 left-0 w-1/2"
               />
               {slides.map((slide, idx) => {
-                console.log('>>> currPos:', currPosition * 50);
                 const formula = currPosition + idx;
                 const transform = `translateX(${formula * 100}%) rotate(${
                   formula * 50
@@ -237,11 +238,12 @@ const Home: NextPage = () => {
           </span>
         </section>
         {/* Section 2 */}
-        <section className="mt-40 relative z-10">
+        <section ref={sec2Ref} className="mt-40 relative z-10">
           <div className="md:flex max-w-7xl m-auto ">
             <Heading
               heading="some top restaurant for dining out or in!"
-              className="w-1/2"
+              className="md:w-1/2"
+              parentNodeForAnimation={sec2Ref}
             />
             <div className="md:w-1/2 w-full text-2xl p-8 md:p-0 md:px-4 text-gray-500">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -250,8 +252,8 @@ const Home: NextPage = () => {
               nisi ut aliquip ex ea commodo consequat.
             </div>
           </div>
-          <div className="md:flex-row flex flex-col relative justify-center align-middle items-center max-w-7xl m-auto mt-40 gap-10">
-            {REST_PRIMERY_CARD.map((card) => {
+          <div className="md:flex-row flex flex-col relative justify-center align-middle items-center max-w-7xl m-auto md:mt-40 gap-10">
+            {REST_PRIMARY_CARD.map((card) => {
               return (
                 <PrimaryCard
                   bgImgUrl={card.imgUrl}
@@ -292,7 +294,7 @@ const Home: NextPage = () => {
         {/* Section 3 */}
 
         <section className=" relative">
-          <div className="mt-40 md:py-60 py-20 bg-secondary-bg  relative  overflow-hidden">
+          <div className="md:mt-40 mt-20 md:py-60 py-20 bg-secondary-bg  relative  overflow-hidden">
             <div className="relative m-auto  max-w-4xl text-center ">
               <div className="bg-white md:p-20 px-6 mx-8 md:mx-auto py-20 md:px-40 relative z-10">
                 <div className="relative z-40">
@@ -334,11 +336,12 @@ const Home: NextPage = () => {
         </section>
 
         {/* Section 4 */}
-        <section className="mt-40 relative z-10">
+        <section ref={sec4Ref} className="md:mt-40 mt-20 relative z-10">
           <div className="md:flex max-w-7xl m-auto ">
             <Heading
               heading="Our Services"
               className="w-2/6 pr-8 lg:pr-16 2xl:pr-20"
+              parentNodeForAnimation={sec4Ref}
             />
             <div className="md:w-4/6 w-full text-2xl p-8 md:p-0 md:px-4 text-gray-500">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -447,25 +450,31 @@ const Home: NextPage = () => {
               nonumy eirmod tempor invidunt ut labore et dolore magna.
             </p>
           </div>
-          <div className="w-full grid-auto-fit gap-8 max-w-4xl m-auto">
-            {REST_SECONDARY_CARD.map((rest) => {
-              return (
-                <SecondaryCard
-                  bgImgUrl={rest.imgUrl}
-                  desc={rest.desc}
-                  title={rest.title}
-                  price={rest.price}
-                />
-              );
-            })}
+          <div className="sm:m-10 m-4">
+            <div className="w-full grid-auto-fit gap-8 max-w-4xl m-auto">
+              {REST_SECONDARY_CARD.map((rest) => {
+                return (
+                  <SecondaryCard
+                    bgImgUrl={rest.imgUrl}
+                    desc={rest.desc}
+                    title={rest.title}
+                    price={rest.price}
+                  />
+                );
+              })}
+            </div>
           </div>
         </section>
         {/* Section 6 */}
-        <section className="  bg-secondary-bg">
+        <section ref={sec6Ref} className="  bg-secondary-bg">
           <div className="md:flex max-w-7xl m-auto">
             <div className="flex flex-col m-auto gap-10 md:w-1/2 w-full">
-              <Heading heading="Download app for Exciting Deals" />
-              <div className="w-full text-2xl p-8 md:p-0  md:pl-14 md:px-4 text-gray-500">
+              <Heading
+                heading="Download app for Exciting Deals"
+                className="mt-20"
+                parentNodeForAnimation={sec6Ref}
+              />
+              <div className="w-full text-2xl px-8 md:p-0  md:pl-14 md:px-4 text-gray-500">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris

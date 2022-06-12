@@ -13,3 +13,48 @@ body {
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
+.heading-dash {
+  animation: scale-out 1s;
+}
+.heading-content {
+  animation: slidein 3s;
+}
+
+@keyframes scale-out {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scaleY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slidein {
+  0% {
+    margin-left: -200px;
+    opacity: 0;
+  }
+  35% {
+    margin-left: -20px;
+    opacity: 0;
+  }
+  65% {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    opacity: 0.8;
+  }
+  100% {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    opacity: 1;
+  }
+}

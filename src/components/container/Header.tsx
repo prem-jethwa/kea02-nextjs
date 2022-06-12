@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
-import Image from 'next/image';
 
 const logo = 'icons/logo.png';
 
@@ -23,7 +22,7 @@ const menuItems = [
   },
 ];
 
-const Header = (props) => {
+const Header = (props: any) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <header className="flex flex-row md:flex p-6 justify-between text-primary-font items-center md:px-4 w-full mt-4 md:mt-0 m-auto pt-2 max-w-7xl">
