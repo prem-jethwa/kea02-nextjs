@@ -217,13 +217,13 @@ const Home: NextPage = () => {
             <div className=" absolute right-6 md:bottom-2 -bottom-10 bg-primary-lightBg rounded-full flex align-middle  gap-4 justify-center cursor-pointer m-auto">
               <img
                 src="./icons/slider-btn.png"
-                className="h-full hover:bg-secondary-fontNum rounded-full m-2"
+                className="h-full hover:bg-secondary-fontNum rounded-full p-2 "
                 onClick={handleRightSlideClick}
               />
               <img
                 src="./icons/slider-btn.png"
                 height={20}
-                className="rotate-180 h-full mb-1 hover:bg-secondary-fontNum rounded-full m-2"
+                className="rotate-180 h-full  hover:bg-secondary-fontNum rounded-full p-2"
                 onClick={handleLeftSlideClick}
               />
             </div>
