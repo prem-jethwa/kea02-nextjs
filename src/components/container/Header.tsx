@@ -33,7 +33,7 @@ const Header = (props: any) => {
         ref={headerRef}
         className="flex flex-row md:flex p-6 justify-between text-primary-font items-center md:px-4 w-full mt-4 md:mt-0 m-auto pt-2 max-w-7xl"
       >
-        <div className="flex md:justify-start justify-between md:flex md:items-end w-full md:py-4 relative">
+        <div className="flex md:justify-start justify-between md:flex md:items-end w-full md:py-4 md:pb-10 relative">
           {/* <img
             src={logo}
             width="100"

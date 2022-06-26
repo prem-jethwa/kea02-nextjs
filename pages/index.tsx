@@ -255,8 +255,8 @@ const Home: NextPage = () => {
           </div>
           <img
             src="./bg/leave.png"
-            className="absolute hidden lg:block bottom-0 -left-60 "
-            style={{ height: 1050 }}
+            className="absolute hidden lg:block  -bottom-36 -left-80 "
+            style={{ height: 1200 }}
           />
         </section>
 
