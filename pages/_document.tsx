@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <title>Prem Jethwa</title>
+        <title>Kea02 | Prem Jethwa</title>
         <link rel="icon" type="image/x-icon" href="/favicon.svg" />
       </Head>
       <body>
