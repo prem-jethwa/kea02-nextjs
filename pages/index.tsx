@@ -21,6 +21,7 @@ const Home: NextPage = () => {
   const slideRef: any = useRef(null);
   const totalSlides = HERO_SLIDES?.length - 1;
 
+  // For Animation threshold
   const sec2Ref = useRef(null);
   const sec4Ref = useRef(null);
   const sec6Ref = useRef(null);
@@ -68,29 +69,34 @@ const Home: NextPage = () => {
   return (
     <>
       <Header />
-      <main className="">
+      <main>
+        {/* Red BG outside Img */}
         <div
           className=" hidden md:block absolute h-screen top-0  -z-10 right-0  bg-primary-main "
           style={{ minWidth: slideRef.current?.offsetWidth / 2 }}
-        ></div>
-
+        />
+        {/* --- */}
+        {/* --- Section 1 */}
         <section className="relative">
           <div className="md:flex h-full top-0  justify-between align-middle mx-auto max-w-7xl relative text-primary-font">
+            {/* Red BG within img height */}
             <div
-              className="hidden md:block absolute h-screen -top-32 -bottom-20 -z-10 right-0  bg-primary-main "
+              className="hidden md:block absolute h-screen -top-32 -bottom-20 -z-10 right-0  bg-primary-main select-none"
               style={{ minWidth: slideRef.current?.offsetWidth / 2 }}
             >
-              <img src="./bg/leave.png" className="-ml-24 mt-0 w-60" />
+              <img
+                src="./bg/leave.png"
+                className="-ml-24 mt-0 w-60 select-none"
+              />
             </div>
+            {/* --- */}
             <div className="p-6 w-full  mt-8">
-              {/* <div className="m-4"> */}
               <span className="xl:text-9xl md:text-8xl text-6xl opacity-10 font-bold ">
                 Food
               </span>
               <h2 className="lg:text-6xl md:text-4xl text-3xl font-bold ">
                 Discover Restaurant <br /> & Delicious Food
               </h2>
-              {/* </div> */}
 
               <Input
                 btnText="GO"
@@ -102,11 +108,16 @@ const Home: NextPage = () => {
               className="w-full relative overflow-hidden max-w-2xl"
               style={{ height: slideRef.current?.offsetHeight }}
             >
-              <img src="./bg/dotted-bg.png" className="absolute left-0 w-1/2" />
+              {/* Dotted img within dish image */}
               <img
                 src="./bg/dotted-bg.png"
-                className="absolute bottom-0 left-0 w-1/2"
+                className="absolute left-0 w-1/2 select-none"
               />
+              <img
+                src="./bg/dotted-bg.png"
+                className="absolute bottom-0 left-0 w-1/2 select-none"
+              />
+              {/* --- */}
               {HERO_SLIDES.map((slide, idx) => {
                 const formula = currPosition + idx;
                 const transform = `translateX(${formula * 100}%) rotate(${
@@ -122,13 +133,13 @@ const Home: NextPage = () => {
                       opacity: formula * 100 ? 0 : 1,
                     }}
                   >
-                    <img src={slide.imgUrl} className="h-full" />
+                    <img src={slide.imgUrl} className="h-full select-none" />
                   </div>
                 );
               })}
             </div>
-            {/* <div className=" absolute right-6 bottom-2"></div> */}
-            <div className=" absolute right-6 md:bottom-2 -bottom-10 bg-primary-lightBg rounded-full flex align-middle  gap-4 justify-center cursor-pointer m-auto">
+            {/* Slide arrows */}
+            <div className=" absolute right-6 md:bottom-2 select-none -bottom-10 bg-primary-lightBg rounded-full flex align-middle  gap-4 justify-center cursor-pointer m-auto">
               <img
                 src="./icons/slider-btn.png"
                 className="h-full hover:bg-secondary-fontNum rounded-full p-2 "
@@ -141,16 +152,16 @@ const Home: NextPage = () => {
                 onClick={handleLeftSlideClick}
               />
             </div>
+            {/* --- */}
           </div>
-          <div
-            className=" hidden md:block absolute w-full h-screen mt-4 bg-primary-bg "
-            // style={{ minWidth: slideRef.current?.offsetWidth / 2 }}
-          ></div>
+          <div className=" hidden md:block absolute w-full h-screen mt-4 bg-primary-bg " />
+          {/* Location */}
           <span className="absolute md:bottom-0 -bottom-32 flex  align-middle left-0 px-6 pl-10 py-2 text-white bg-primary-main rounded-r-full">
-            <img src="./icons/location.png" />{' '}
+            <img src="./icons/location.png" />
             <p className="m-auto px-4">Hydrabad</p>
           </span>
         </section>
+
         {/* Section 2 */}
         <section ref={sec2Ref} className="mt-40 relative z-10">
           <div className="md:flex max-w-7xl m-auto ">

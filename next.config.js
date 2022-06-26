@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'restaurant-nextjs.vercel.app'],
+    domains: ['localhost', 'kea02.vercel.app'],
   },
 };

@@ -1,4 +1,4 @@
-export const APP_URL = 'https://restaurant-nextjs.vercel.app'; //https://restaurant-nextjs.vercel.app/
+export const APP_URL = 'https://kea02.vercel.app/'; //https://restaurant-nextjs.vercel.app/
 
 export const HERO_SLIDES = [
   { imgUrl: `${APP_URL}/img/slide-dish.png`, tranX: 0, rotate: 0 },
