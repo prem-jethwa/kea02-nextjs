@@ -1,23 +1,24 @@
-import type { NextPage } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useState, useRef, useEffect } from 'react';
-import PrimaryCard from '../src/components/Card/PrimaryCard';
-import SecondaryCard from '../src/components/Card/SecondaryCard';
-import Header from '../src/components/container/Header';
-import Heading from '../src/components/Heading/Heading';
-import Input from '../src/components/Input/Input';
+import type { NextPage } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useState, useRef, useEffect } from "react";
+import PrimaryCard from "../src/components/Card/PrimaryCard";
+import SecondaryCard from "../src/components/Card/SecondaryCard";
+import Header from "../src/components/container/Header";
+import Heading from "../src/components/Heading/Heading";
+import Input from "../src/components/Input/Input";
 import {
   APP_URL,
   HERO_SLIDES,
   REST_PRIMARY_CARD,
   REST_SECONDARY_CARD,
   SOCIAL_MEDIA,
-} from '../src/utils/constants';
-import { debounce } from '../src/utils/utils';
+} from "../src/utils/constants";
+import { debounce } from "../src/utils/utils";
 
 const Home: NextPage = () => {
   const [currPosition, setCurrPosition] = useState(1);
+  const [isDishImgLoader, setIsDishImgLoader] = useState(false);
   const slideRef: any = useRef(null);
   const totalSlides = HERO_SLIDES?.length - 1;
 
@@ -40,11 +41,17 @@ const Home: NextPage = () => {
     } else {
       setCurrPosition(0);
     }
+
+    console.log(">>>", isDishImgLoader, slideRef);
   };
 
   useEffect(() => {
     setCurrPosition(0);
-  }, [slideRef.current]);
+  }, [slideRef.current, isDishImgLoader]);
+
+  const handleDishLoad = (e: any) => {
+    setIsDishImgLoader(true);
+  };
 
   // ----
   const [dimensions, setDimensions] = React.useState({
@@ -59,10 +66,10 @@ const Home: NextPage = () => {
       });
     }, 10);
 
-    window.addEventListener('resize', debouncedHandleResize);
+    window.addEventListener("resize", debouncedHandleResize);
 
     return () => {
-      window.removeEventListener('resize', debouncedHandleResize);
+      window.removeEventListener("resize", debouncedHandleResize);
     };
   });
 
@@ -133,7 +140,11 @@ const Home: NextPage = () => {
                       opacity: formula * 100 ? 0 : 1,
                     }}
                   >
-                    <img src={slide.imgUrl} className="h-full select-none" />
+                    <img
+                      src={slide.imgUrl}
+                      className="select-none"
+                      onLoad={handleDishLoad}
+                    />
                   </div>
                 );
               })}
@@ -225,7 +236,7 @@ const Home: NextPage = () => {
                 <div className="relative z-40">
                   <div className="bg-primary-main w-14 h-2 m-auto" />
                   <p className="my-4 mb-8 text-2xl text-primary-font">
-                    advanced booking{' '}
+                    advanced booking{" "}
                   </p>
                   <Input
                     rounded="rounded-none"
@@ -308,7 +319,7 @@ const Home: NextPage = () => {
                     </div>
                     <p className="text-primary-font opacity-50">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do{' '}
+                      sed do{" "}
                     </p>
                   </div>
                 </div>
@@ -325,7 +336,7 @@ const Home: NextPage = () => {
 
                     <p className="text-primary-font opacity-50">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do{' '}
+                      sed do{" "}
                     </p>
                   </div>
                   <img
@@ -337,7 +348,7 @@ const Home: NextPage = () => {
                       height={100}
                       width={100}
                       src={`${APP_URL}/icons/dish.png`}
-                      className="m-auto text-center"
+                      className="m-auto max-h-full text-center"
                     />
                   </div>
                 </div>
@@ -355,7 +366,7 @@ const Home: NextPage = () => {
                   </h2>
                   <p className="text-primary-font px-12 opacity-50">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do{' '}
+                    do{" "}
                   </p>
                 </div>
                 <div className="flex gap-2 my-3">
@@ -417,7 +428,7 @@ const Home: NextPage = () => {
         <section className="relative">
           <div className=" text-primary-font text-3xl text-center max-w-lg m-auto mb-10 mt-20">
             <h2>
-              Get notified <br /> about new amazing products{' '}
+              Get notified <br /> about new amazing products{" "}
             </h2>
             <p className=" text-primary-font text-xl opacity-50 mt-8">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -442,7 +453,7 @@ const Home: NextPage = () => {
               {SOCIAL_MEDIA.map((media) => (
                 <Link href={media.link} className="cursor-pointer">
                   <a>
-                    <img src={media.imgUrl} />{' '}
+                    <img src={media.imgUrl} />{" "}
                   </a>
                 </Link>
               ))}

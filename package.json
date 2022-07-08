@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "export PORT=4001 && next dev",
     "build": "next build",
     "start": "next start",
     "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
